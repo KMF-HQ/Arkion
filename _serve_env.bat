@@ -14,9 +14,32 @@ REM ============================================================
 REM
 REM      call "%~dp0_serve_env.bat"
 REM
-REM
-REM
 REM ============================================================
+REM [BAT-UX 2026-10-01] Guard against "I double-clicked it".  This file is a
+REM   FRAGMENT: every launcher does `call _serve_env.bat` and expects it to do
+REM   nothing but set variables.  Launched on its own it prints nothing, exits in
+REM   milliseconds and the window closes -- which reads as a crash.
+REM   %cmdcmdline% holds the command line of the thing that was launched, so this
+REM   file's own name only appears there when THIS file is what got launched.
+echo %cmdcmdline% | find /i "_serve_env.bat" >nul 2>&1
+if not errorlevel 1 (
+  echo [serve_env] This is NOT a launcher -- it is a shared settings file.
+  echo [serve_env]
+  echo [serve_env] The startup scripts each do "call _serve_env.bat" to pick up
+  echo [serve_env] the engine tuning defaults.  On its own it only sets variables,
+  echo [serve_env] so it finishes instantly and the window closes by itself.
+  echo [serve_env]
+  echo [serve_env] Use one of these instead:
+  echo [serve_env]   START.bat             first-run wizard plus chat
+  echo [serve_env]   serve\chat.bat        chat, starting the engine if needed
+  echo [serve_env]   serve\run_serve.bat   run only the local server
+  echo [serve_env]   run_gate_k3.bat       engine self-check
+  echo [serve_env]   serve\cli.bat status  ask a running server what it is doing
+  echo [serve_env]
+  echo [serve_env] Press any key to close this window.
+  pause >nul
+  exit /b 0
+)
 
 
 REM [LOCATE 2026-10-01] Machine/package override written by

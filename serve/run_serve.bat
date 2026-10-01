@@ -149,6 +149,7 @@ if not defined ARK_MODEL_DIR (
   echo [run_serve]   Manual fix:
   echo [run_serve]     set ARK_MODEL_DIR=E:\path\to\model
   echo [run_serve]     set ARK_PLE_ROOT=D:\path\to\qwen3.8-flash-next
+  if not defined ARK_NO_PAUSE pause
   exit /b 2
 )
 if not exist "%ARK_MODEL_DIR%\nonexp_pack.json" (
@@ -156,6 +157,7 @@ if not exist "%ARK_MODEL_DIR%\nonexp_pack.json" (
   echo [run_serve]   ARK_MODEL_DIR must be the folder holding nonexp_pack.json,
   echo [run_serve]   nonexp_fp8.bin / nonexp_bf16.bin, ple_index.json and the expert
   echo [run_serve]   packs -- see the "what you need" table in README.md.
+  if not defined ARK_NO_PAUSE pause
   exit /b 2
 )
 if not defined ARK_PLE_ROOT (
@@ -170,4 +172,16 @@ echo [run_serve] KV reserve=%SERVER_CTX% rows ^| http://%ARKION_HOST%:%ARKION_PO
 echo [run_serve] model=%ARK_MODEL_DIR%
 echo [run_serve] ple_root=%ARK_PLE_ROOT%  qwen_dir=%QWEN_DIR%
 python "%~dp0app.py"
-endlocal
+set RC=%ERRORLEVEL%
+endlocal & set RC=%RC%
+
+REM [BAT-UX 2026-10-01] The server blocks here while it runs, so the window normally
+REM   stays up.  If it returns immediately -- python missing, port already taken, the
+REM   engine refusing to start -- hold the window open so the reason is readable
+REM   instead of the window vanishing.  ARK_NO_PAUSE=1 skips this for automation.
+if not "%RC%"=="0" (
+  echo.
+  echo [run_serve] the serve layer exited with code %RC%.
+  echo [run_serve] the reason is in the lines above, and in _engine.log.
+  if not defined ARK_NO_PAUSE pause
+)
