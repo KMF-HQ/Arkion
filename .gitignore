@@ -1,0 +1,9 @@
+# runtime junk produced INSIDE the package - never commit
+serve/_snaps/*
+!serve/_snaps/.gitkeep
+_engine.log
+_gate_k3.log
+_chat_k3.log
+arkion.local.bat
+__pycache__/
+*.pyc
