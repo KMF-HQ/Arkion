@@ -5,7 +5,8 @@
 **8 GB 显存 / 16 GB 内存**的消费级单卡上运行。
 
 > ⚠️ **闭源预览版，按现状提供，无担保。** 使用前请阅读 [`EULA.md`](EULA.md)。
-> 模型权重**不在本包内**，由发布者在**魔搭（ModelScope）**单独发布。
+> 模型权重**不在本包内**，在**魔搭（ModelScope）**单独发布：
+> **https://www.modelscope.cn/models/HQsensei/Arkion-Q1-K3**（K3 3-bit 量化包，49.1 GB）
 
 > ⚠️ **English**: Arkion-Q1 is a **closed-source preview** of a MoE inference engine that
 > runs a 112B-parameter model on an **8 GB VRAM / 16 GB RAM** consumer machine.
@@ -40,6 +41,17 @@
 | 系统 | Windows（本预览仅含 Windows 二进制） |
 
 **本包内不含模型数据。** 数据清单与获取方式见 [`DEPENDENCIES.md`](DEPENDENCIES.md)。
+
+下载顺序（两处，都必需）：
+
+| 从哪下 | 内容 | 体积 | 设为什么 |
+|---|---|---|---|
+| **[魔搭 · HQsensei/Arkion-Q1-K3](https://www.modelscope.cn/models/HQsensei/Arkion-Q1-K3)** | 我们量化的专家包 + 非专家权重 + 索引 | 49.1 GB | `ARK_MODEL_DIR` |
+| 魔搭上游的 **Qwen3.8-Flash-Next** 基座页 | PLE 真表（131 个 safetensors）+ tokenizer + chat template | 335.3 GB | `ARK_PLE_ROOT` |
+
+> ⚠️ 基座**必须版本对得上**：`ple_index.json` 记的是到上游分片的精确字节偏移，下错版本
+> **不报错、只出垃圾**。用本包 `MANIFEST.json` 的 `upstream` 段自检（含每个分片长度与
+> 关键小文件 sha256）。
 
 ## 快速开始
 

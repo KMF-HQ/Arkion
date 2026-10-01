@@ -25,6 +25,10 @@
 
 ### 1. `<模型目录>/experts_k3c/` — 42.7 GB ★ K3 核心
 
+> **获取地址**：本节 1/3/4/5 的文件（专家包 + 非专家权重 + 索引）已打包为 **49.1 GB** 的
+> 发布件，在魔搭下载：**https://www.modelscope.cn/models/HQsensei/Arkion-Q1-K3**
+> 下载后把该目录设为 `ARK_MODEL_DIR` 即可。第 2 节（PLE 基座）仍需从上游页面单独获取。
+
 K3 3-bit EXL3 trellis 专家权重，**48 个文件**（`L00_experts_k3c.bin` … `L47_experts_k3c.bin`）。
 - 每专家固定槽 **1,863,680 B**（K4SLOT under `K4_BITS=3`）
 - 每层 512 专家 ⇒ 每文件 ≈ 0.95 GB，48 层 ≈ 45.9 GB（= 42.7 GiB，本机实测）
