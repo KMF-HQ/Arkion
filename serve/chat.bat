@@ -46,38 +46,70 @@ set PYTHONIOENCODING=utf-8
 set PORT=%ARKION_PORT%
 if "%PORT%"=="" set PORT=8471
 set URL=http://127.0.0.1:%PORT%
+set ELOG=%ARKION_ENGINE_LOG%
+if "%ELOG%"=="" set ELOG=_engine.log
 
-python -c "import urllib.request;urllib.request.urlopen('%URL%/healthz',timeout=3)" >nul 2>&1
+REM [BAT-UX 2026-10-01] Readiness now means "the ENGINE is up", not "HTTP answers".
+REM   /healthz returns 200 the moment uvicorn listens, and the serve layer KEEPS RUNNING
+REM   after the engine dies during warmup ("warmup failed: ... rc=3"), so the old check
+REM   walked straight into the chat and the real error surfaced only after the user had
+REM   typed something.  Probe the `started` field instead:
+REM     exit 0 = engine ready | exit 4 = HTTP up but engine still loading | other = down
+python -c "import json,urllib.request,sys;d=json.load(urllib.request.urlopen('%URL%/healthz',timeout=3));sys.exit(0 if d.get('started') else 4)" >nul 2>&1
 if not errorlevel 1 goto :ready
+if errorlevel 4 goto :wait
 
 echo [chat.bat] no server on %URL% -- starting the engine now.
 echo [chat.bat] It takes about 45 s; progress appears in the new "arkion-serve" window.
+if exist "%ELOG%" del /q "%ELOG%" >nul 2>&1
 start "arkion-serve" cmd /c "serve\run_serve.bat %PORT%"
 
 set /a TRIES=0
 :wait
 set /a TRIES+=1
-python -c "import urllib.request;urllib.request.urlopen('%URL%/healthz',timeout=3)" >nul 2>&1
+python -c "import json,urllib.request,sys;d=json.load(urllib.request.urlopen('%URL%/healthz',timeout=3));sys.exit(0 if d.get('started') else 4)" >nul 2>&1
 if not errorlevel 1 goto :ready
-if %TRIES% GEQ 150 goto :timeout
-if %TRIES%==15 echo [chat.bat] still loading, please wait ...
-ping -n 3 127.0.0.1 >nul 2>&1
+REM the engine reports "[path] FATAL: ..." and exits -- stop waiting at once instead of
+REM burning the whole timeout when the answer is already in the log
+if exist "%ELOG%" findstr /C:"FATAL" "%ELOG%" >nul 2>&1
+if not errorlevel 1 goto :enginefail
+if %TRIES% GEQ 120 goto :timeout
+if %TRIES%==10 echo [chat.bat] still loading, please wait ...
+if %TRIES%==30 echo [chat.bat] still loading -- the engine reads ~42 GB of expert packs
+ping -n 2 127.0.0.1 >nul 2>&1
 goto :wait
 
+:enginefail
+echo.
+echo [chat.bat] FATAL: the engine refused to start.  The log says:
+echo.
+findstr /C:"FATAL" /C:"[err]" /C:"CUDA ERR" /C:"[path]" "%ELOG%"
+echo.
+echo [chat.bat] full log: %ELOG%
+echo [chat.bat] usual causes:
+echo [chat.bat]   1^) model folder   - set ARK_MODEL_DIR, or just run START.bat once
+echo [chat.bat]   2^) PLE root       - ARK_PLE_ROOT must hold the ~335 GB PLE shards
+echo [chat.bat]   3^) not enough VRAM/RAM - see the notes at the top of run_serve.bat
+echo [chat.bat] the same output is in the "arkion-serve" window (it stays open).
+pause
+exit /b 1
+
 :timeout
-echo [chat.bat] FATAL: %URL% did not answer after about 5 minutes.
-echo [chat.bat] Look at the "arkion-serve" window for the engine error.
+echo [chat.bat] FATAL: %URL% did not report a started engine after about 2 minutes.
+echo [chat.bat] Look at the "arkion-serve" window, and at %ELOG%.
 echo [chat.bat] A dead engine on the first request usually means SERVER_CTX is
 echo [chat.bat] too large -- read the CTX-FIX note at the top of run_serve.bat.
+if exist "%ELOG%" findstr /C:"FATAL" /C:"[err]" "%ELOG%"
 pause
 exit /b 1
 
 :ready
-echo [chat.bat] server ready at %URL%  --  type /help for commands, /exit to quit.
+echo [chat.bat] engine ready at %URL%  --  type /help for commands, /exit to quit.
 python "serve\chat_cli.py" --url "%URL%" %*
 set RC=%ERRORLEVEL%
 echo.
 echo [chat.bat] chat closed. The serve layer is still running; just run
 echo [chat.bat] chat.bat again for an instant start. To free the GPU:
 echo [chat.bat]   taskkill /IM arkion-q1.exe /F
+if not "%RC%"=="0" pause
 exit /b %RC%

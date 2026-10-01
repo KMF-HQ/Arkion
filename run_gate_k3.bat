@@ -57,11 +57,30 @@ REM   cp_end until the transport leaves the critical path, so the wall gain is ~
 REM do NOT set CHAT / GEN_MAX here (gate runs in chain mode)
 
 call "%~dp0_serve_env.bat"
-bin\arkion-q1.exe "E:/qw38" "%~dp0data\golden" > _gate_k3.log 2>&1
+
+REM [PATH-ENV 2026-10-01] WAS a hardcoded "E:/qw38" (the author's drive).  The gate is
+REM   the one tool that proves an install is sane, so it has to work on the machine it
+REM   runs on: take the model dir from arkion.local.bat / ARK_MODEL_DIR and refuse to
+REM   guess.  (The engine refuses too now -- it exits 2 with a readable message.)
+if not defined ARK_MODEL_DIR (
+  echo [gate] FATAL: ARK_MODEL_DIR is not set.  Run START.bat once, or set it manually.
+  if not defined ARK_NO_PAUSE pause
+  exit /b 2
+)
+if not exist "%ARK_MODEL_DIR%\nonexp_pack.json" (
+  echo [gate] FATAL: %ARK_MODEL_DIR%\nonexp_pack.json was not found.
+  echo [gate]   ARK_MODEL_DIR must point at the model folder -- see README.md.
+  if not defined ARK_NO_PAUSE pause
+  exit /b 2
+)
+bin\arkion-q1.exe "%ARK_MODEL_DIR%" "%~dp0data\golden" > _gate_k3.log 2>&1
 
 echo.
 echo === K3 gate result ===
-findstr /C:"M3 GPU" /C:"pos 19" /C:"CUDA ERR" _gate_k3.log
+findstr /C:"M3 GPU" /C:"pos 19" /C:"CUDA ERR" /C:"FATAL" _gate_k3.log
 echo.
 echo full log: _gate_k3.log
+REM [BAT-UX 2026-10-01] Hold the window open when double-clicked.  Automation can set
+REM   ARK_NO_PAUSE=1 to skip the prompt.
+if not defined ARK_NO_PAUSE pause
 endlocal

@@ -275,7 +275,8 @@ serve\chat.bat --once "1+1=?" --no-think
 | `serve\**` + `serve\_snaps\` | `_snaps_test\` / `_snaps_srvtest\`（测试缓存） |
 | `data\golden\**` | `tools\`（2.1 GB）、`_archive\`、`session-*\` |
 | `docs\**`、`README.md`、`DEPENDENCIES.md` | `logs\`、`*.log`、`*.err`、`__pycache__\` |
-| `_serve_env.bat`、`run_gate_k3.bat`、`run_chat_k3.bat` | `_t_*.bat`（实验记录，留在开发树）、`arkion.local.bat`（本机生成） |
+| `_serve_env.bat`、`run_gate_k3.bat` | `_t_*.bat`（实验记录，留在开发树）、`arkion.local.bat`（本机生成） |
+| `START.bat`、`serve\chat.bat`、`serve\cli.bat`、`serve\run_serve.bat`（用户入口） | `run_chat_k3.bat`（**2026-10-01 起不发**：它调 `tools\_mkprompt.py`/`_decode.py`，而 `tools\` 从不进包 ⇒ 用户双击必然报 `[err] prompt generation failed` 后关窗） |
 | `src\**`（源码，可选） | `src\_snap\`、`*.bak*` |
 
 > 模型数据**不打进包**：靠 `ARK_MODEL_DIR` / `ARK_PLE_ROOT` 引用，约 385 GB。

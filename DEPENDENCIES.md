@@ -94,7 +94,7 @@ K4 4-bit 专家权重，49 个文件。每专家槽 **2,478,080 B**（其中数�
 | `serve/*.py` | ~120 KB | 服务层（app/engine/api/tokens/think/context/chat_cli/arkion-cli/locate_model） |
 | `serve/*.bat` | ~10 KB | `run_serve.bat`（启动）`chat.bat`（一键聊天）`cli.bat` |
 | `_serve_env.bat` | 2 KB | 共享默认值（所有 K3 启动脚本 call 它） |
-| `run_gate_k3.bat` / `run_chat_k3.bat` | ~5 KB | 门禁 / 一次性对话 |
+| `run_gate_k3.bat` | ~4 KB | 端到端门禁自检（需模型数据；`ARK_NO_PAUSE=1` 可跳过结尾暂停） |
 | `docs/*.md` | ~60 KB | 本目录全部文档 |
 
 > `bin/` 下另有 10 个历史 exe（K4/实验构建）。它们**都能由 `src/_b_*.bat` 重建**，

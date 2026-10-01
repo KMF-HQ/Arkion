@@ -19,9 +19,17 @@ REM
 REM ============================================================
 
 
-REM [LOCATE 2026-10-01] 本机路径/包覆盖：由 `python serve\locate_model.py --write` 生成。
-REM   放在所有 if-not-defined 之前 => 它的值优先于本文件下面的默认值。
-REM   生成的 arkion.local.bat 会设 ARK_MODEL_DIR（和可选的 K4_PACK_DIR）。
+REM [LOCATE 2026-10-01] Machine/package override written by
+REM   `python serve\locate_model.py --write`; sourced BEFORE every if-not-defined
+REM   below, so its values win over this file's defaults.  The generated
+REM   arkion.local.bat sets ARK_MODEL_DIR (and optionally K4_PACK_DIR).
+REM *** ASCII ONLY -- THE THREE LINES THAT USED TO SIT HERE WERE CHINESE AND THEY BROKE
+REM *** THIS VERY CALL.  cmd decodes a .bat in the OEM codepage (CP936 here); the UTF-8
+REM *** bytes shifted the character boundaries, the REM keyword was swallowed, the line
+REM *** `arkion.local.bat` was executed as a command (it does not exist) and the CALL
+REM *** below lost its `if exist "%~dp0ar` prefix.  Net effect: the machine override
+REM *** NEVER loaded, ARK_MODEL_DIR silently fell back to the author's E:\qw38 and every
+REM *** launcher died on a user's machine.  Do not paste Chinese into this file.
 if exist "%~dp0arkion.local.bat" call "%~dp0arkion.local.bat"
 
 if not defined ROPE_HOIST set ROPE_HOIST=1

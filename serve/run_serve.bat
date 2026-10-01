@@ -133,12 +133,38 @@ REM                   the resolved path and its source at startup.
 REM    QWEN_DIR       tokenizer.json / chat_template.jinja, used by serve/tokens.py.
 REM                   Defaults to ARK_PLE_ROOT (same repo).
 REM ============================================================================
-REM [LOCATE 2026-10-01] 先应用本机覆盖（`python serve\locate_model.py --write` 生成），
-REM   它优先于下面这三行默认值。没生成过就跳过。
+REM [LOCATE 2026-10-01] Source the machine override FIRST (`serve\locate_model.py
+REM   --write` generates it); its values win over the defaults further down.
 if exist "%~dp0..\arkion.local.bat" call "%~dp0..\arkion.local.bat"
-if not defined ARK_MODEL_DIR set ARK_MODEL_DIR=E:\qw38
-if not defined ARK_PLE_ROOT  set ARK_PLE_ROOT=D:\qwen3.8-flash-next
-if not defined QWEN_DIR      set QWEN_DIR=%ARK_PLE_ROOT%
+
+REM [PATH-ENV 2026-10-01] NO baked-in dev paths any more.  This file used to fall back
+REM   to the author's E:\qw38 / D:\qwen3.8-flash-next.  On any other machine that is
+REM   simply a wrong path: the engine died with a FATAL the user could not explain
+REM   ("why is it looking at E:\qw38?") and the console window vanished.  Fail early
+REM   and say what to do instead.
+if not defined ARK_MODEL_DIR (
+  echo [run_serve] FATAL: ARK_MODEL_DIR is not set and arkion.local.bat was not found.
+  echo [run_serve]   Easiest fix: run START.bat once -- the wizard locates the model
+  echo [run_serve]   and writes arkion.local.bat in the folder above serve\.
+  echo [run_serve]   Manual fix:
+  echo [run_serve]     set ARK_MODEL_DIR=E:\path\to\model
+  echo [run_serve]     set ARK_PLE_ROOT=D:\path\to\qwen3.8-flash-next
+  exit /b 2
+)
+if not exist "%ARK_MODEL_DIR%\nonexp_pack.json" (
+  echo [run_serve] FATAL: %ARK_MODEL_DIR%\nonexp_pack.json was not found.
+  echo [run_serve]   ARK_MODEL_DIR must be the folder holding nonexp_pack.json,
+  echo [run_serve]   nonexp_fp8.bin / nonexp_bf16.bin, ple_index.json and the expert
+  echo [run_serve]   packs -- see the "what you need" table in README.md.
+  exit /b 2
+)
+if not defined ARK_PLE_ROOT (
+  echo [run_serve] WARNING: ARK_PLE_ROOT is not set, so the engine will use its
+  echo [run_serve]   built-in fallback -- the AUTHOR's path, which will not exist on
+  echo [run_serve]   your machine.  Point it at the repo holding the PLE shards.
+  echo [run_serve]   PLE shards are the ~335 GB original bf16 repo, NOT the model dir.
+)
+if defined ARK_PLE_ROOT if not defined QWEN_DIR set QWEN_DIR=%ARK_PLE_ROOT%
 
 echo [run_serve] KV reserve=%SERVER_CTX% rows ^| http://%ARKION_HOST%:%ARKION_PORT%
 echo [run_serve] model=%ARK_MODEL_DIR%
