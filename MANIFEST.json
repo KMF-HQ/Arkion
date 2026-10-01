@@ -1,0 +1,944 @@
+{
+ "format": "arkion-q1-ms-manifest-v1",
+ "project": "Arkion-Q1",
+ "release": "v0.0.1-preview",
+ "quant": "K3 (3-bit EXL3 trellis)",
+ "generated_utc": "2026-10-01T11:42:24Z",
+ "engine_binary": "arkion-q1.exe (multi-arch: sm_86 SASS+PTX, sm_89 SASS, sm_120 SASS)",
+ "note": "本清单只描述**本包**与**上游基座依赖**；模型权重由魔搭上游页分发的部分不在本包内。",
+ "artifacts": [
+  {
+   "path": "nonexp_pack.json",
+   "role": "非专家权重索引（records: store/off/bytes）",
+   "bytes": 132605,
+   "sha256": "a9fa454e702a52b1fe76905bb5ffdbbf67ee08799f5de998aa31d7c1527a104c",
+   "_sha256_seconds": 0.0
+  },
+  {
+   "path": "nonexp_fp8.bin",
+   "role": "非专家权重 fp8 主体",
+   "bytes": 2971074560,
+   "sha256": "47e643541e9d4ea787697e5fa533dafb04c6c93e3cd7a866172efca718ab946c",
+   "_sha256_seconds": 3.3
+  },
+  {
+   "path": "nonexp_bf16.bin",
+   "role": "非专家权重 bf16 主体",
+   "bytes": 3953248280,
+   "sha256": "bb7b2f6abd643ccfa86f7aa4d61cd03ddc94fabccf7223c47f022f6031cf361e",
+   "_sha256_seconds": 4.2
+  },
+  {
+   "path": "ple_index.json",
+   "role": "PLE 真表索引（指向上游分片的字节偏移）",
+   "bytes": 32033,
+   "sha256": "4095e4a660563fccff3567e15c4e7f97a99131438468eaf8eac0c4d4d0d504bd",
+   "_sha256_seconds": 0.0
+  },
+  {
+   "path": "experts_k3c/L00_experts_k3c.bin",
+   "role": "专家包 layer 0（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "793b9b3c20fe01d1a392e0ccb4f0a1c2b83f01c1e0116bf9c8f4da89c43847b0",
+   "_sha256_seconds": 0.9
+  },
+  {
+   "path": "experts_k3c/L01_experts_k3c.bin",
+   "role": "专家包 layer 1（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "06a37d85faaefcb5fa967055ee2da054124387e4f78e339558c02bd15d93c62c",
+   "_sha256_seconds": 0.9
+  },
+  {
+   "path": "experts_k3c/L02_experts_k3c.bin",
+   "role": "专家包 layer 2（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "69c53e0e73cf22ca3223780af088753bacf74c515c7ec5874be6023a861a3dfc",
+   "_sha256_seconds": 1.0
+  },
+  {
+   "path": "experts_k3c/L03_experts_k3c.bin",
+   "role": "专家包 layer 3（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "81df99cca079a76c64fe3cee836175515c5bef4d5dd70f93a4a08271c60d861b",
+   "_sha256_seconds": 1.0
+  },
+  {
+   "path": "experts_k3c/L04_experts_k3c.bin",
+   "role": "专家包 layer 4（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "6ff8d1630ba2e430e97c55c7c345410c71ea89fd670902a3f8f53c805306810b",
+   "_sha256_seconds": 1.0
+  },
+  {
+   "path": "experts_k3c/L05_experts_k3c.bin",
+   "role": "专家包 layer 5（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "08ed42fc7379e3d010d38322861f6fe6e16b35cee2b363b4a25e5c2e7be7898f",
+   "_sha256_seconds": 1.0
+  },
+  {
+   "path": "experts_k3c/L06_experts_k3c.bin",
+   "role": "专家包 layer 6（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "adc76c71412324dc5fbd9be90fb2d9023384328fd8ebc999ec50361f2ce613f3",
+   "_sha256_seconds": 0.9
+  },
+  {
+   "path": "experts_k3c/L07_experts_k3c.bin",
+   "role": "专家包 layer 7（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "c5709e3b9b203133ef2874698c56655f00bf06b1990d5fc8924569ea21793e5a",
+   "_sha256_seconds": 0.9
+  },
+  {
+   "path": "experts_k3c/L08_experts_k3c.bin",
+   "role": "专家包 layer 8（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "effea0c9f9350c19431c44ab9c485203f119ee972a94bbbab386ac96c00c4754",
+   "_sha256_seconds": 0.8
+  },
+  {
+   "path": "experts_k3c/L09_experts_k3c.bin",
+   "role": "专家包 layer 9（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "be4014bb6d7f1d996867023ec1d37971aead7987bdcf555d15daefe336162b94",
+   "_sha256_seconds": 0.9
+  },
+  {
+   "path": "experts_k3c/L10_experts_k3c.bin",
+   "role": "专家包 layer 10（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "487964efd32bd2425766191deb33e2ef985915797305cf1ea8a19b5e1a92ffcc",
+   "_sha256_seconds": 0.9
+  },
+  {
+   "path": "experts_k3c/L11_experts_k3c.bin",
+   "role": "专家包 layer 11（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "62ea998d2bfee36d9286e0718c2150bfcb45fa9c0fb3ded6878475658f5a211b",
+   "_sha256_seconds": 1.0
+  },
+  {
+   "path": "experts_k3c/L12_experts_k3c.bin",
+   "role": "专家包 layer 12（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "f235a3ca319c4324ad5e851e81253387fb3b65ac700a2fa7aff53ec325968b2e",
+   "_sha256_seconds": 1.0
+  },
+  {
+   "path": "experts_k3c/L13_experts_k3c.bin",
+   "role": "专家包 layer 13（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "6a877890035daa9c60adde85e0a8eb7b00ec03084d11ca2bec7a8c01c8f8c856",
+   "_sha256_seconds": 1.0
+  },
+  {
+   "path": "experts_k3c/L14_experts_k3c.bin",
+   "role": "专家包 layer 14（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "047809af4fda82717955854a0365fd7f7d4bddc1d5e22c3cdaebf952b1378b0f",
+   "_sha256_seconds": 1.0
+  },
+  {
+   "path": "experts_k3c/L15_experts_k3c.bin",
+   "role": "专家包 layer 15（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "cc7b56148366628d5152eab36ad36a8b83f74a94e5b000f00b39d45040df5e61",
+   "_sha256_seconds": 1.0
+  },
+  {
+   "path": "experts_k3c/L16_experts_k3c.bin",
+   "role": "专家包 layer 16（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "84b984bb2969b4c1d78b8c1ba68ee9d59e23df0030bc3eba7034c9c4da881a11",
+   "_sha256_seconds": 1.0
+  },
+  {
+   "path": "experts_k3c/L17_experts_k3c.bin",
+   "role": "专家包 layer 17（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "4911a0e47c878e41fb01c8b70ce6418353a82c2a1a97365bb2188cda9ddeb709",
+   "_sha256_seconds": 1.0
+  },
+  {
+   "path": "experts_k3c/L18_experts_k3c.bin",
+   "role": "专家包 layer 18（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "6c04dea0a3c454a475e99226ec12fa4aeeec74e28602b0cba8feb95981d25398",
+   "_sha256_seconds": 1.0
+  },
+  {
+   "path": "experts_k3c/L19_experts_k3c.bin",
+   "role": "专家包 layer 19（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "f542663f3362acb6b9fad6bf027fa4fcb058ed77ca753560e9f2ef6a48d0c864",
+   "_sha256_seconds": 1.0
+  },
+  {
+   "path": "experts_k3c/L20_experts_k3c.bin",
+   "role": "专家包 layer 20（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "09026d61cbfedeeab8634e63b049960c4447504c0a6657bd342c2cf9e2edc351",
+   "_sha256_seconds": 1.0
+  },
+  {
+   "path": "experts_k3c/L21_experts_k3c.bin",
+   "role": "专家包 layer 21（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "bded8a180db04ccd2a8d1e08a3e8b3286596c12391b8cb13d74075d8b5ad6dc8",
+   "_sha256_seconds": 1.0
+  },
+  {
+   "path": "experts_k3c/L22_experts_k3c.bin",
+   "role": "专家包 layer 22（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "720f590d43bdc78e8d04d9011f5d254662eb5cfdd8d8b0611e47b32e23a9ba28",
+   "_sha256_seconds": 1.0
+  },
+  {
+   "path": "experts_k3c/L23_experts_k3c.bin",
+   "role": "专家包 layer 23（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "9fa295f0224206321f7f2252dc53869765c2332ce19c5c95adbbbdd367363b5a",
+   "_sha256_seconds": 1.0
+  },
+  {
+   "path": "experts_k3c/L24_experts_k3c.bin",
+   "role": "专家包 layer 24（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "49987b37f1810722f140beecf6da09a9582bbec54edcff767134e7211c5ddeeb",
+   "_sha256_seconds": 0.9
+  },
+  {
+   "path": "experts_k3c/L25_experts_k3c.bin",
+   "role": "专家包 layer 25（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "19c439df1d2405e629c23924f15370e3cfcfba15f010b309432acfeda2bc2aad",
+   "_sha256_seconds": 0.9
+  },
+  {
+   "path": "experts_k3c/L26_experts_k3c.bin",
+   "role": "专家包 layer 26（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "4e6717cf224c57d30ba5f732c00b19a2b3a0380fa10a77486078a3d6ab5bc0b0",
+   "_sha256_seconds": 0.9
+  },
+  {
+   "path": "experts_k3c/L27_experts_k3c.bin",
+   "role": "专家包 layer 27（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "da85178bf0e8573c38bc2f7ca1da5d8c90f106f8d6d07cebf4a6ce19e8fc7aab",
+   "_sha256_seconds": 0.9
+  },
+  {
+   "path": "experts_k3c/L28_experts_k3c.bin",
+   "role": "专家包 layer 28（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "e84e4ba9196d81c3497adc7d5142710ec1c424a2cfd2fc3681082065efec799f",
+   "_sha256_seconds": 1.0
+  },
+  {
+   "path": "experts_k3c/L29_experts_k3c.bin",
+   "role": "专家包 layer 29（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "32959320a1c779ffb8f7bc16abd2c3a05cacb8e274a7ca715144520fba74f74b",
+   "_sha256_seconds": 1.0
+  },
+  {
+   "path": "experts_k3c/L30_experts_k3c.bin",
+   "role": "专家包 layer 30（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "c9c42640d8a4ed2d4d5c7088fce4f282e345ed5fcf46ac99c848969bd2fb529f",
+   "_sha256_seconds": 1.0
+  },
+  {
+   "path": "experts_k3c/L31_experts_k3c.bin",
+   "role": "专家包 layer 31（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "1fa7c635732efcd422f27186e3684883f05b78952fc7cbd996ffdeaf7d06d174",
+   "_sha256_seconds": 0.9
+  },
+  {
+   "path": "experts_k3c/L32_experts_k3c.bin",
+   "role": "专家包 layer 32（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "d7f2421aef5c36acce26ce37f5a0b01c5289e39de6ad0546225fca6a5154db57",
+   "_sha256_seconds": 0.9
+  },
+  {
+   "path": "experts_k3c/L33_experts_k3c.bin",
+   "role": "专家包 layer 33（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "29ee240cda626186e1b2b41a2d7030426c07e2d4af403471bb09cd78032adfbb",
+   "_sha256_seconds": 0.9
+  },
+  {
+   "path": "experts_k3c/L34_experts_k3c.bin",
+   "role": "专家包 layer 34（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "dd0808fb368034efe29fac24c3188986e494366d7c68fad7f7f1e400be96e7be",
+   "_sha256_seconds": 0.9
+  },
+  {
+   "path": "experts_k3c/L35_experts_k3c.bin",
+   "role": "专家包 layer 35（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "3ca6d2cdf347f74e5cfba552877a3df929e2db01059baddfe8a4e25959f98d5a",
+   "_sha256_seconds": 1.0
+  },
+  {
+   "path": "experts_k3c/L36_experts_k3c.bin",
+   "role": "专家包 layer 36（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "ac8ff30560cd1bdcf396bb0c488c4ee3f0b196f40af3665022bf1b5f667d0ffa",
+   "_sha256_seconds": 1.0
+  },
+  {
+   "path": "experts_k3c/L37_experts_k3c.bin",
+   "role": "专家包 layer 37（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "8b05dbf2e7d9441e2aa85855a9ad0a4ee512d4e0ab81d7540c089d1f5c29ec28",
+   "_sha256_seconds": 1.0
+  },
+  {
+   "path": "experts_k3c/L38_experts_k3c.bin",
+   "role": "专家包 layer 38（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "b6110f6bf31ffb63dc190210005759c7c49904db7e7074d4fb705d9f82b65166",
+   "_sha256_seconds": 1.0
+  },
+  {
+   "path": "experts_k3c/L39_experts_k3c.bin",
+   "role": "专家包 layer 39（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "59bce80d15ac4dcca6d7b5afa5843e8c917b570c24400af788c41b10a1a20ad1",
+   "_sha256_seconds": 0.9
+  },
+  {
+   "path": "experts_k3c/L40_experts_k3c.bin",
+   "role": "专家包 layer 40（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "6ad9e60829b161ce48e51226c1816d6e2de999a338ad4d4f6cbacd694a2807e1",
+   "_sha256_seconds": 1.0
+  },
+  {
+   "path": "experts_k3c/L41_experts_k3c.bin",
+   "role": "专家包 layer 41（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "004a910f942ca0f9a11af515fe0930749eb0221fced2585518bbbee50519ac4d",
+   "_sha256_seconds": 0.9
+  },
+  {
+   "path": "experts_k3c/L42_experts_k3c.bin",
+   "role": "专家包 layer 42（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "ab15bd30836ba25785ce182ef48d33dc9bc1e70138538bf5e508005549ef5335",
+   "_sha256_seconds": 1.0
+  },
+  {
+   "path": "experts_k3c/L43_experts_k3c.bin",
+   "role": "专家包 layer 43（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "5b02b53e803af5202d3e7eab602823a21c6bded5be92c3ed6d2cb1b9f722f210",
+   "_sha256_seconds": 1.0
+  },
+  {
+   "path": "experts_k3c/L44_experts_k3c.bin",
+   "role": "专家包 layer 44（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "60208febd930e838f02b20c5e817c62a5b8134aab03378c8f3cfc86158fefe2f",
+   "_sha256_seconds": 0.9
+  },
+  {
+   "path": "experts_k3c/L45_experts_k3c.bin",
+   "role": "专家包 layer 45（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "8419335ae35d43a057eaa7b9bc42245e43035277df70e6123aac8ef5724ea2a0",
+   "_sha256_seconds": 0.9
+  },
+  {
+   "path": "experts_k3c/L46_experts_k3c.bin",
+   "role": "专家包 layer 46（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "c379c855393e4c4edc7ad308d6120193f9da99dbf02a75d5f6fe07274f3d63a0",
+   "_sha256_seconds": 0.9
+  },
+  {
+   "path": "experts_k3c/L47_experts_k3c.bin",
+   "role": "专家包 layer 47（512 专家 x 1,863,680 B）",
+   "bytes": 954204160,
+   "sha256": "92b9866d03cefd39f3ebbe9c34eedf73f263de86717daa1ca23d93506cd2daa4",
+   "_sha256_seconds": 0.9
+  }
+ ],
+ "artifacts_total_bytes": 52726287158,
+ "upstream": {
+  "root_hint": "qwen3.8-flash-next",
+  "files": [
+   {
+    "name": "model-00001-of-00131.safetensors",
+    "bytes": 1040155944
+   },
+   {
+    "name": "model-00002-of-00131.safetensors",
+    "bytes": 3355443368
+   },
+   {
+    "name": "model-00003-of-00131.safetensors",
+    "bytes": 1832518264
+   },
+   {
+    "name": "model-00004-of-00131.safetensors",
+    "bytes": 3355443368
+   },
+   {
+    "name": "model-00005-of-00131.safetensors",
+    "bytes": 3355888504
+   },
+   {
+    "name": "model-00006-of-00131.safetensors",
+    "bytes": 3200016032
+   },
+   {
+    "name": "model-00007-of-00131.safetensors",
+    "bytes": 3200016032
+   },
+   {
+    "name": "model-00008-of-00131.safetensors",
+    "bytes": 3200016032
+   },
+   {
+    "name": "model-00009-of-00131.safetensors",
+    "bytes": 3200016032
+   },
+   {
+    "name": "model-00010-of-00131.safetensors",
+    "bytes": 3200016032
+   },
+   {
+    "name": "model-00011-of-00131.safetensors",
+    "bytes": 3200016032
+   },
+   {
+    "name": "model-00012-of-00131.safetensors",
+    "bytes": 3200016032
+   },
+   {
+    "name": "model-00013-of-00131.safetensors",
+    "bytes": 3200016032
+   },
+   {
+    "name": "model-00014-of-00131.safetensors",
+    "bytes": 3200016032
+   },
+   {
+    "name": "model-00015-of-00131.safetensors",
+    "bytes": 3200016032
+   },
+   {
+    "name": "model-00016-of-00131.safetensors",
+    "bytes": 3200016032
+   },
+   {
+    "name": "model-00017-of-00131.safetensors",
+    "bytes": 3200016032
+   },
+   {
+    "name": "model-00018-of-00131.safetensors",
+    "bytes": 3200016032
+   },
+   {
+    "name": "model-00019-of-00131.safetensors",
+    "bytes": 3200016032
+   },
+   {
+    "name": "model-00020-of-00131.safetensors",
+    "bytes": 3200016032
+   },
+   {
+    "name": "model-00021-of-00131.safetensors",
+    "bytes": 3200016032
+   },
+   {
+    "name": "model-00022-of-00131.safetensors",
+    "bytes": 3200016032
+   },
+   {
+    "name": "model-00023-of-00131.safetensors",
+    "bytes": 3200016032
+   },
+   {
+    "name": "model-00024-of-00131.safetensors",
+    "bytes": 3200016032
+   },
+   {
+    "name": "model-00025-of-00131.safetensors",
+    "bytes": 3200016032
+   },
+   {
+    "name": "model-00026-of-00131.safetensors",
+    "bytes": 3200016032
+   },
+   {
+    "name": "model-00027-of-00131.safetensors",
+    "bytes": 3200016032
+   },
+   {
+    "name": "model-00028-of-00131.safetensors",
+    "bytes": 3200016032
+   },
+   {
+    "name": "model-00029-of-00131.safetensors",
+    "bytes": 3200016032
+   },
+   {
+    "name": "model-00030-of-00131.safetensors",
+    "bytes": 3200016032
+   },
+   {
+    "name": "model-00031-of-00131.safetensors",
+    "bytes": 3200016040
+   },
+   {
+    "name": "model-00032-of-00131.safetensors",
+    "bytes": 3200016040
+   },
+   {
+    "name": "model-00033-of-00131.safetensors",
+    "bytes": 3200016040
+   },
+   {
+    "name": "model-00034-of-00131.safetensors",
+    "bytes": 3200016040
+   },
+   {
+    "name": "model-00035-of-00131.safetensors",
+    "bytes": 3200016040
+   },
+   {
+    "name": "model-00036-of-00131.safetensors",
+    "bytes": 3200016040
+   },
+   {
+    "name": "model-00037-of-00131.safetensors",
+    "bytes": 1742347160
+   },
+   {
+    "name": "model-00038-of-00131.safetensors",
+    "bytes": 3355443376
+   },
+   {
+    "name": "model-00039-of-00131.safetensors",
+    "bytes": 1716599840
+   },
+   {
+    "name": "model-00040-of-00131.safetensors",
+    "bytes": 3355443376
+   },
+   {
+    "name": "model-00041-of-00131.safetensors",
+    "bytes": 1941966288
+   },
+   {
+    "name": "model-00042-of-00131.safetensors",
+    "bytes": 3355443376
+   },
+   {
+    "name": "model-00043-of-00131.safetensors",
+    "bytes": 1839072016
+   },
+   {
+    "name": "model-00044-of-00131.safetensors",
+    "bytes": 3355443376
+   },
+   {
+    "name": "model-00045-of-00131.safetensors",
+    "bytes": 1832518280
+   },
+   {
+    "name": "model-00046-of-00131.safetensors",
+    "bytes": 3355443376
+   },
+   {
+    "name": "model-00047-of-00131.safetensors",
+    "bytes": 1716681904
+   },
+   {
+    "name": "model-00048-of-00131.safetensors",
+    "bytes": 3355443376
+   },
+   {
+    "name": "model-00049-of-00131.safetensors",
+    "bytes": 1935433152
+   },
+   {
+    "name": "model-00050-of-00131.safetensors",
+    "bytes": 3355443376
+   },
+   {
+    "name": "model-00051-of-00131.safetensors",
+    "bytes": 1832518280
+   },
+   {
+    "name": "model-00052-of-00131.safetensors",
+    "bytes": 3355443376
+   },
+   {
+    "name": "model-00053-of-00131.safetensors",
+    "bytes": 1839072024
+   },
+   {
+    "name": "model-00054-of-00131.safetensors",
+    "bytes": 3355443376
+   },
+   {
+    "name": "model-00055-of-00131.safetensors",
+    "bytes": 1716599840
+   },
+   {
+    "name": "model-00056-of-00131.safetensors",
+    "bytes": 3355443376
+   },
+   {
+    "name": "model-00057-of-00131.safetensors",
+    "bytes": 1941966280
+   },
+   {
+    "name": "model-00058-of-00131.safetensors",
+    "bytes": 3355443368
+   },
+   {
+    "name": "model-00059-of-00131.safetensors",
+    "bytes": 1716600048
+   },
+   {
+    "name": "model-00060-of-00131.safetensors",
+    "bytes": 3471361528
+   },
+   {
+    "name": "model-00061-of-00131.safetensors",
+    "bytes": 3355443376
+   },
+   {
+    "name": "model-00062-of-00131.safetensors",
+    "bytes": 3510240000
+   },
+   {
+    "name": "model-00063-of-00131.safetensors",
+    "bytes": 3355443376
+   },
+   {
+    "name": "model-00064-of-00131.safetensors",
+    "bytes": 1832518280
+   },
+   {
+    "name": "model-00065-of-00131.safetensors",
+    "bytes": 3355443376
+   },
+   {
+    "name": "model-00066-of-00131.safetensors",
+    "bytes": 1719221392
+   },
+   {
+    "name": "model-00067-of-00131.safetensors",
+    "bytes": 3355443376
+   },
+   {
+    "name": "model-00068-of-00131.safetensors",
+    "bytes": 1935412552
+   },
+   {
+    "name": "model-00069-of-00131.safetensors",
+    "bytes": 3355443376
+   },
+   {
+    "name": "model-00070-of-00131.safetensors",
+    "bytes": 1832523520
+   },
+   {
+    "name": "model-00071-of-00131.safetensors",
+    "bytes": 3355443376
+   },
+   {
+    "name": "model-00072-of-00131.safetensors",
+    "bytes": 1839072128
+   },
+   {
+    "name": "model-00073-of-00131.safetensors",
+    "bytes": 3355443376
+   },
+   {
+    "name": "model-00074-of-00131.safetensors",
+    "bytes": 1716599840
+   },
+   {
+    "name": "model-00075-of-00131.safetensors",
+    "bytes": 3355443376
+   },
+   {
+    "name": "model-00076-of-00131.safetensors",
+    "bytes": 1938689480
+   },
+   {
+    "name": "model-00077-of-00131.safetensors",
+    "bytes": 3355443376
+   },
+   {
+    "name": "model-00078-of-00131.safetensors",
+    "bytes": 1832600344
+   },
+   {
+    "name": "model-00079-of-00131.safetensors",
+    "bytes": 3355443376
+   },
+   {
+    "name": "model-00080-of-00131.safetensors",
+    "bytes": 1716599840
+   },
+   {
+    "name": "model-00081-of-00131.safetensors",
+    "bytes": 3355443368
+   },
+   {
+    "name": "model-00082-of-00131.safetensors",
+    "bytes": 1935433136
+   },
+   {
+    "name": "model-00083-of-00131.safetensors",
+    "bytes": 3355443376
+   },
+   {
+    "name": "model-00084-of-00131.safetensors",
+    "bytes": 1716599840
+   },
+   {
+    "name": "model-00085-of-00131.safetensors",
+    "bytes": 3355443376
+   },
+   {
+    "name": "model-00086-of-00131.safetensors",
+    "bytes": 1941966296
+   },
+   {
+    "name": "model-00087-of-00131.safetensors",
+    "bytes": 3355443376
+   },
+   {
+    "name": "model-00088-of-00131.safetensors",
+    "bytes": 1839072024
+   },
+   {
+    "name": "model-00089-of-00131.safetensors",
+    "bytes": 3355443376
+   },
+   {
+    "name": "model-00090-of-00131.safetensors",
+    "bytes": 1835795216
+   },
+   {
+    "name": "model-00091-of-00131.safetensors",
+    "bytes": 3355443376
+   },
+   {
+    "name": "model-00092-of-00131.safetensors",
+    "bytes": 1716599840
+   },
+   {
+    "name": "model-00093-of-00131.safetensors",
+    "bytes": 3355443376
+   },
+   {
+    "name": "model-00094-of-00131.safetensors",
+    "bytes": 1935412928
+   },
+   {
+    "name": "model-00095-of-00131.safetensors",
+    "bytes": 3355443376
+   },
+   {
+    "name": "model-00096-of-00131.safetensors",
+    "bytes": 1832518280
+   },
+   {
+    "name": "model-00097-of-00131.safetensors",
+    "bytes": 3355443376
+   },
+   {
+    "name": "model-00098-of-00131.safetensors",
+    "bytes": 1832518280
+   },
+   {
+    "name": "model-00099-of-00131.safetensors",
+    "bytes": 3355443376
+   },
+   {
+    "name": "model-00100-of-00131.safetensors",
+    "bytes": 1716600224
+   },
+   {
+    "name": "model-00101-of-00131.safetensors",
+    "bytes": 3355443376
+   },
+   {
+    "name": "model-00102-of-00131.safetensors",
+    "bytes": 1935413160
+   },
+   {
+    "name": "model-00103-of-00131.safetensors",
+    "bytes": 3355443368
+   },
+   {
+    "name": "model-00104-of-00131.safetensors",
+    "bytes": 1832518272
+   },
+   {
+    "name": "model-00105-of-00131.safetensors",
+    "bytes": 3355443376
+   },
+   {
+    "name": "model-00106-of-00131.safetensors",
+    "bytes": 1863975680
+   },
+   {
+    "name": "model-00107-of-00131.safetensors",
+    "bytes": 3355443376
+   },
+   {
+    "name": "model-00108-of-00131.safetensors",
+    "bytes": 1900676064
+   },
+   {
+    "name": "model-00109-of-00131.safetensors",
+    "bytes": 3355443376
+   },
+   {
+    "name": "model-00110-of-00131.safetensors",
+    "bytes": 1716599840
+   },
+   {
+    "name": "model-00111-of-00131.safetensors",
+    "bytes": 3355443376
+   },
+   {
+    "name": "model-00112-of-00131.safetensors",
+    "bytes": 1935413176
+   },
+   {
+    "name": "model-00113-of-00131.safetensors",
+    "bytes": 3355443376
+   },
+   {
+    "name": "model-00114-of-00131.safetensors",
+    "bytes": 1832523512
+   },
+   {
+    "name": "model-00115-of-00131.safetensors",
+    "bytes": 3355443376
+   },
+   {
+    "name": "model-00116-of-00131.safetensors",
+    "bytes": 1832518280
+   },
+   {
+    "name": "model-00117-of-00131.safetensors",
+    "bytes": 3355443376
+   },
+   {
+    "name": "model-00118-of-00131.safetensors",
+    "bytes": 1716620424
+   },
+   {
+    "name": "model-00119-of-00131.safetensors",
+    "bytes": 3355443376
+   },
+   {
+    "name": "model-00120-of-00131.safetensors",
+    "bytes": 1948519840
+   },
+   {
+    "name": "model-00121-of-00131.safetensors",
+    "bytes": 3355443368
+   },
+   {
+    "name": "model-00122-of-00131.safetensors",
+    "bytes": 1832518264
+   },
+   {
+    "name": "model-00123-of-00131.safetensors",
+    "bytes": 3355443368
+   },
+   {
+    "name": "model-00124-of-00131.safetensors",
+    "bytes": 1729707128
+   },
+   {
+    "name": "model-00125-of-00131.safetensors",
+    "bytes": 3355443368
+   },
+   {
+    "name": "model-00126-of-00131.safetensors",
+    "bytes": 1935412520
+   },
+   {
+    "name": "model-00127-of-00131.safetensors",
+    "bytes": 3355443368
+   },
+   {
+    "name": "model-00128-of-00131.safetensors",
+    "bytes": 1832518264
+   },
+   {
+    "name": "model-00129-of-00131.safetensors",
+    "bytes": 3355443368
+   },
+   {
+    "name": "model-00130-of-00131.safetensors",
+    "bytes": 2974788136
+   },
+   {
+    "name": "model-00131-of-00131.safetensors",
+    "bytes": 1271398528
+   }
+  ],
+  "small": {
+   "model.safetensors.index.json": {
+    "bytes": 170726,
+    "sha256": "99e815241ef03325536b0aaa4441deea45174c17fae31e10f0bb456410c590de"
+   },
+   "config.json": {
+    "bytes": 4745,
+    "sha256": "889658f2508e8c61d409b02e70e0d78d8d4452ec65aaafbe129805d213d2e74b"
+   },
+   "generation_config.json": {
+    "bytes": 202,
+    "sha256": "e70c136c1b78ddc1fb0905bac8e733a4dc448d4f852a5dd75143fffc70be550e"
+   },
+   "tokenizer.json": {
+    "bytes": 12809320,
+    "sha256": "0997f410c57a1f4e53b09e4be8f4a172d90edd9564368fb0847030937229b9f3"
+   },
+   "chat_template.jinja": {
+    "bytes": 8952,
+    "sha256": "c3cf9e34abf4f9e36c2d72165aa9c132d3e2a725b6c2586aaa3a8af9d7a81041"
+   },
+   "configuration.json": {
+    "bytes": 29,
+    "sha256": "8fa209ef18ac53dea0c47cf8d6f4e92c907565a4971bee413c1772e314a251fa"
+   }
+  },
+  "safetensors_count": 131,
+  "safetensors_total_bytes": 360000192888
+ },
+ "build": {
+  "gate": "positions=22/22 checks=15/16; pos19 argmax=109455 margin=1.0000; pos11 margin=0.0000 (tie, known)",
+  "ppl_batch_np83_219_512": "mean_logprob=-0.557593 (bit-identical, 3 arms, 2047 positions)",
+  "wall_ms_per_pos": {
+   "np83": 78.4,
+   "np219": 60.4,
+   "np512": 37.0
+  },
+  "measured_on": "RTX 3070 Ti 8GB + 16GB RAM, Windows, sm_86",
+  "ctx_verified_max": 65536
+ }
+}
