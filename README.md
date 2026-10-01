@@ -116,4 +116,4 @@ set ARK_DUMP_CONFIG=1 & arkion-q1.exe "E:\qw38" "data\golden"
 
 ## 支持
 
-本项目由单人开发，累计一个月，因此：仅 Windows + 单卡、无多卡、无 ROCm、无视觉、批处理未完成、无社区基准。后续会持续优化更近。如果你愿意的话，请你给出宝贵的支持。爱发电：
+本项目由单人开发，累计一个月，因此：仅 Windows + 单卡、无多卡、无 ROCm、无视觉、批处理未完成、无社区基准。后续会持续优化更近。如果你愿意的话，请你给出宝贵的支持。爱发电主页：https://ifdian.net/a/Arkion?tab=home
